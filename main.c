@@ -36,7 +36,7 @@ int main(void)
 
 	    	/* use malloc to allocate enough space for the pointer to the argument variables */
 	    	
-		execute(num_tokens, argv, copy_command);
+		execute(num_tokens, argv, copy_command, full_command);
 
 	    	/*free(full_command);*/
 	    	free(copy_command);

@@ -1,8 +1,7 @@
 #include "main.h"
-void execute(int num_tokens, char **argv, char *copy_command)
+void execute(int num_tokens, char **argv, char *copy_command, char *full_command)
 {
-	int counter, i;
-	char *token, *delim = " \n";
+	int counter, i; char *token, *delim = " \n";
 
        	if (num_tokens != 0)
 	{
@@ -18,10 +17,15 @@ void execute(int num_tokens, char **argv, char *copy_command)
 			token = strtok(NULL, delim);
 		}
 		argv[i] = NULL;
+
+		/*check for built_in */
+		if (builtin_check(argv[0]))
+			builtin_handler(argv, copy_command, full_command, num_tokens);
 		/* execute the commands with execve */
-		execmd(argv);
+		else
+			execmd(argv);
 		
-		/* print the content of argv */
+		/* free print the content of argv */
 		for (counter = 0; counter<num_tokens; counter++)
 		{
 			printf(">>>>> %s \n", argv[counter]);
