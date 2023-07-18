@@ -48,15 +48,24 @@ char *_strcat(char *destination, char *source)
 	return (new);
 }
 
-char* _strdup(char* str)
+/*
+ * _strdup - Function which duplicates a given string
+ * @str: Pointer to the input string that needs to be duplicated
+ * Return: returns a pointer to the memory containing the duplicated string
+ */
+char *_strdup(char *str)
 {
-	size_t len = _strlen(str) + 1;  /* Get the length of the string, including the null byte*/
-	char* dup = malloc(len);  /* Allocate memory for the duplicated string*/
+	size_t len = _strlen(str) + 1;
+	/*
+	 *  Get the length of the string, including the null byte
+	 */
+	char *dup = malloc(len);  /* Allocate memory for the duplicated string*/
+
 	if (dup != NULL)
 	{
-        	_strcpy(dup, str);  /* Copy the string to the allocated memory */
+		_strcpy(dup, str);  /* Copy the string to the allocated memory */
 	}
-    return (dup);
+	return (dup);
 }
 /**
  * _strlen - returns the length of a string

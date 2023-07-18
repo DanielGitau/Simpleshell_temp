@@ -12,13 +12,13 @@ void execmd(char **argv)
 		/* get the command */
 		command = argv[0];
 		printf("in the execute func >>>>> %s \n", command);
-		if(stat(command, &buffer) == 0)
+		if (stat(command, &buffer) == 0)
 		{
 			switch_1 = 1;
 			printf("In the absolute_path condition>>\n");
 		}
 		/* generate the path to this command before passing it to execve */
-		else if((actual_command = get_location(command)) != NULL)
+		else if (actual_command == get_location(command))
 		{
 			switch_1 = 1;
 			switch_2 = 1;
@@ -29,7 +29,7 @@ void execmd(char **argv)
 		{
 			 perror("Error");
 		}
-		
+
 		/*actual_command = get_location(argv[0]);*/
 		if (switch_1)
 		{
