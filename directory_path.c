@@ -1,12 +1,12 @@
 #include "main.h"
 
-/*
- * *directory_path - Generates the full directory path for a command
+/**
+ * directory_path - Generates the full directory path for a command
  * @command_length: The length of the command string
  * @path_token: A pointer to the path where the command is located
  * @command: Pointer to an array representing the name of the command
  * Return: Returns pointer to the complete directory path for the command
- */
+ **/
 char *directory_path(int command_length, char *path_token, char *command)
 {
 	char *file_path;

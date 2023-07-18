@@ -23,7 +23,7 @@ int _strlen(char *s);
 int _putchar(char c);
 int put_s(char *str);
 bool builtin_check(const char *command);
-void builtin_handler(char **argv, char *copy_cmd, char *full_cmd, int num_tok);
+void builtin_handler(char **argv, char *copy_cmd, char *full_cmd, int num_tokn);
 void _env(void);
 void exit_func(char **argv, char *copy_cmd, char *full_cmd, int num_tokn);
 #endif

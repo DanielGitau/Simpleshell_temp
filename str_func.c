@@ -48,7 +48,7 @@ char *_strcat(char *destination, char *source)
 	return (new);
 }
 
-/*
+/**
  * _strdup - Function which duplicates a given string
  * @str: Pointer to the input string that needs to be duplicated
  * Return: returns a pointer to the memory containing the duplicated string

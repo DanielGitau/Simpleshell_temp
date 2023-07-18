@@ -1,10 +1,10 @@
 #include "main.h"
 
-/*
+/**
  * token_count - Function counts the number of tokens in a given command
  * @copy_command: Pointer to an array used to store a copy of the original
  * @full_command: Pointer to an array with the command to be tokenized
- * Returns: The number of tokens
+ * Return: The number of tokens
  */
 int token_count(char *copy_command, char *full_command)
 {
@@ -28,7 +28,5 @@ int token_count(char *copy_command, char *full_command)
 		num_tokens++;
 		token = strtok(NULL, delim);
 	}
-	printf(">>>>> num_of_token(s) %d \n", num_tokens);
-
 	return (num_tokens);
 }
