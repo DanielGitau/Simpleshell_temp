@@ -1,41 +1,60 @@
 #include "main.h"
 #define BUFFER_SIZE 1024
 
-char *custom_getline()
+#include <stdio.h>
+#include <stdlib.h>
+
+ssize_t custom_getline(char **line, size_t *len, FILE *file)
 {
-	static char buffer[BUFFER_SIZE];
-	static int pos;
-	static int length;
+	/* size_t buffer_size = 0; */
+	ssize_t characters_read = 0;
+	int c;
+	char *temp = (char *)realloc(*line, *len);
 
-	if (pos >= length)
+	if (!line || !len || !file)
 	{
-		length = read(STDIN_FILENO, buffer, BUFFER_SIZE);
-		if (length <= 0)
+		return (-1); /* Invalid input parameters */
+	}
+
+	/* Check if line is NULL or buffer size is 0, and allocate initial memory */
+	if (*line == NULL || *len == 0)
+	{
+		*len = 128; /* Initial buffer size */
+		*line = (char *)malloc(*len);
+		if (*line == NULL)
 		{
-			return (NULL); /* End of input or error */
+			return (-1); /* Memory allocation failed */
 		}
-		pos = 0;
 	}
 
-	char *line = NULL;
-	int line_length = 0;
-
-	while (pos < length && buffer[pos] != '\n')
+	while ((c = fgetc(file)) != EOF)
 	{
-		line = realloc(line, line_length + 1);
-		line[line_length++] = buffer[pos++];
+		if (characters_read >= (ssize_t)(*len) - 1)
+		{
+			/* Expand the buffer if needed */
+			*len *= 2; /* Double the buffer size */
+
+			if (temp == NULL)
+			{
+				return (-1); /* Memory reallocation failed */
+			}
+			*line = temp;
+		}
+
+		(*line)[characters_read] = c;
+		characters_read++;
+
+		if (c == '\n')
+		{
+			break; /* End of line reached */
+		}
 	}
 
-	if (pos < length && buffer[pos] == '\n')
+	if (characters_read == 0)
 	{
-		pos++; /* Move past the newline character */
+		return (-1); /* No characters read (e.g., end of file) */
 	}
 
-	if (line != NULL)
-	{
-		line = realloc(line, line_length + 1);
-		line[line_length] = '\0';
-	}
-
-	return (line);
+	(*line)[characters_read] = '\0'; /* Null-terminate the line */
+	return (characters_read);
 }

@@ -26,4 +26,5 @@ bool builtin_check(const char *command);
 void builtin_handler(char **argv, char *copy_cmd, char *full_cmd, int num_tokn);
 void _env(void);
 void exit_func(char **argv, char *copy_cmd, char *full_cmd, int num_tokn);
+ssize_t custom_getline(char **line, size_t *len, FILE *file);
 #endif
