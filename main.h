@@ -26,4 +26,6 @@ bool builtin_check(const char *command);
 void builtin_handler(char **argv, char *copy_cmd, char *full_cmd, int num_tokn);
 void _env(void);
 void exit_func(char **argv, char *copy_cmd, char *full_cmd, int num_tokn);
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+char *_strtok(char *str, const char *delim);
 #endif
