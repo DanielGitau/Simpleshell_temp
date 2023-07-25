@@ -15,12 +15,13 @@ void execmd(char **argv)
 	{
 		/* get the command */
 		command = argv[0];
+		actual_command = get_location(command);
 		if (stat(command, &buffer) == 0)
 		{
 			switch_1 = 1;
 		}
 		/* generate the path to this command before passing it to execve */
-		else if ((actual_command = get_location(command)) != NULL)
+		else if (actual_command != NULL)
 		{
 			switch_1 = 1;
 			switch_2 = 1;

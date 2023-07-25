@@ -18,13 +18,13 @@ void execute(int num_tokn, char **argv, char *copy_cmd, char *full_cmd)
 	if (num_tokn != 0)
 	{
 		argv = malloc(sizeof(char *) * (num_tokn + 1));
-		token = strtok(copy_cmd, delim);
+		token = _strtok(copy_cmd, delim);
 
 		for (i = 0; token != NULL; i++)
 		{
 			argv[i] = malloc(sizeof(char) * (_strlen(token) + 1));
 			_strcpy(argv[i], token);
-			token = strtok(NULL, delim);
+			token = _strtok(NULL, delim);
 		}
 		argv[i] = NULL;
 

@@ -16,7 +16,7 @@ int token_count(char *copy_command, char *full_command)
 	_strcpy(copy_command, full_command);
 
 	/* split the string (full_command) into an array of words */
-	token = strtok(full_command, delim);
+	token = _strtok(full_command, delim);
 
 	/*
 	 * allocate space to store the variable arguments but
@@ -26,7 +26,7 @@ int token_count(char *copy_command, char *full_command)
 	while (token != NULL)
 	{
 		num_tokens++;
-		token = strtok(NULL, delim);
+		token = _strtok(NULL, delim);
 	}
 	return (num_tokens);
 }

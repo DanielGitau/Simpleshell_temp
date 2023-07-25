@@ -16,21 +16,15 @@ int main(void)
 		if (isatty(STDIN_FILENO) != 0)
 			write(STDOUT_FILENO, "$ ", 2);
 		/* get the string that the user types in and pass it to full_command */
-		nchars_read = getline(&full_command, &n, stdin);
-		/* check if the getline function failed or reached EOF or user use CTRL + D */
+		nchars_read = _getline(&full_command, &n, stdin);
+		/* check if the getline function failed or reached EOF/CTRL + D */
 		if (nchars_read == -1)
-		{
-			free(full_command);
 			return (-1);
-		}
-		else
-		{
-			/* let's allocate space to store the characters read by getline */
-			copy_command = malloc(sizeof(char) * (nchars_read + 1));
-			num_tokens = token_count(copy_command, full_command);
-			execute(num_tokens, argv, copy_command, full_command);
-			free(copy_command);
-		}
+		/* let's allocate space to store the characters read by getline */
+		copy_command = malloc(sizeof(char) * (nchars_read + 1));
+		num_tokens = token_count(copy_command, full_command);
+		execute(num_tokens, argv, copy_command, full_command);
+		free(copy_command);
 	}
 	return (0);
 }
