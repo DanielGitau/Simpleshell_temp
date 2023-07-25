@@ -16,7 +16,7 @@ char *find_beginning_of_token(char *token, const char *delim)
 	{
 		is_delim = 0;
 		d = delim;
-		
+
 		while (*d)
 		{
 			if (*token == *d)
@@ -26,7 +26,7 @@ char *find_beginning_of_token(char *token, const char *delim)
 			}
 			d++;
 		}
-		
+
 		if (!is_delim)
 			break;
 		token++;
@@ -44,12 +44,12 @@ char *find_end_of_token(char *next_token, const char *delim)
 {
 	int is_delim;
 	const char *d;
-	
+
 	while (*next_token)
 	{
 		is_delim = 0;
 		d = delim;
-		
+
 		while (*d)
 		{
 			if (*next_token == *d)
@@ -80,12 +80,12 @@ char *_strtok(char *str, const char *delim)
 	static char *token_ptr;
 	static char *next_token;
 	char *token;
-	
+
 	if (str != NULL)
 		token_ptr = str;
 	if (token_ptr == NULL)
 		return (NULL);
-	
+
 	token = token_ptr;
 	token = find_beginning_of_token(token, delim);
 	if (*token == '\0')
@@ -93,7 +93,7 @@ char *_strtok(char *str, const char *delim)
 		token_ptr = NULL;
 		return (NULL);
 	}
-	
+
 	next_token = token + 1;
 	next_token = find_end_of_token(next_token, delim);
 	if (*next_token == '\0')
