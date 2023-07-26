@@ -19,7 +19,10 @@ int main(void)
 		nchars_read = getline(&full_command, &n, stdin);
 		/* check if the getline function failed or reached EOF/CTRL + D */
 		if (nchars_read == -1)
+		{
+			free(full_command);
 			return (-1);
+		}
 		/* let's allocate space to store the characters read by getline */
 		copy_command = malloc(sizeof(char) * (nchars_read + 1));
 		num_tokens = token_count(copy_command, full_command);
