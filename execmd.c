@@ -29,13 +29,12 @@ void execmd(char **argv)
 		}
 		else
 			 perror("Error");
-		/*actual_command = get_location(argv[0]);*/
 		if (switch_1)
 		{
 			/* execute the command with execve */
 			child_p = fork();
 			if (child_p == 0)
-				execve(command, argv, NULL);
+				execve(command, argv, environ);
 			wait(NULL);
 			if (switch_2)
 				free(command);

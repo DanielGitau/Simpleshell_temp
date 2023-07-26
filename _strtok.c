@@ -67,7 +67,7 @@ char *find_end_of_token(char *next_token, const char *delim)
 }
 
 /**
- * custom_strtok - Function to tokenize a string
+ * _strtok - Function to tokenize a string
  * based on a set of delimiter characters
  *
  * @str: The string to be tokenized

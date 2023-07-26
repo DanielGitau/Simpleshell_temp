@@ -11,9 +11,9 @@ void _env(void)
     /* Iterate over each environment variable and print them */
 	while (*env)
 	{
-	put_s(*env);
+		put_s(*env);
 		_putchar('\n');
-	env++;
+		env++;
 	}
 }
 
