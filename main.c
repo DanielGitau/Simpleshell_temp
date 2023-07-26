@@ -16,7 +16,7 @@ int main(void)
 		if (isatty(STDIN_FILENO) != 0)
 			write(STDOUT_FILENO, "$ ", 2);
 		/* get the string that the user types in and pass it to full_command */
-		nchars_read = _getline(&full_command, &n, stdin);
+		nchars_read = getline(&full_command, &n, stdin);
 		/* check if the getline function failed or reached EOF/CTRL + D */
 		if (nchars_read == -1)
 			return (-1);
