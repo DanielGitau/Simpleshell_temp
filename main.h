@@ -16,19 +16,19 @@
 #define TOK_BUFSIZE 128
 #define TOK_DELIM " \t\r\n\a"
 
-/* Points to an array of pointers to strings called the "environment" */
+/* Points to an array of string pointers */
 extern char **environ;
 
 
 /**
- * struct info - struct that contains all relevant data on runtime
+ * struct info - struct stores all relevant info on runtime
  * @argv: argument vector
- * @input: command line written by the user
- * @args: tokens of the command line
- * @status: last status of the shell
- * @count: lines counter
- * @_envrn: environment variable
- * @p_id: process ID of the shell
+ * @input: command line by the user
+ * @args: tokens of the cmd line
+ * @status: last status of the sh
+ * @count: lines count
+ * @_envrn: environ variable
+ * @p_id: process_ID of the sh
  */
 typedef struct info
 {
@@ -42,10 +42,10 @@ typedef struct info
 } datashell;
 
 /**
- * struct separator_l - single linked list
+ * struct separator_l - a singly_linked list
  * @sep: ; | &
- * @next: next node
- * Description: single linked list to store separators
+ * @next: next_node
+ * Description: singly_linked list for storing separators
  */
 typedef struct separator_l
 {
@@ -54,10 +54,10 @@ typedef struct separator_l
 } list_sep;
 
 /**
- * struct line_l - single linked list
- * @line: command line
- * @next: next node
- * Description: single linked list to store command lines
+ * struct line_l - singly_linked list
+ * @line: cmd line
+ * @next: next_node
+ * Description: singly_linked list to store cmd lines
  */
 typedef struct line_l
 {
@@ -66,12 +66,12 @@ typedef struct line_l
 } list_line;
 
 /**
- * struct r_var_li - single linked list
- * @len_var: length of the variable
- * @val: value of the variable
- * @len_val: length of the value
- * @next: next node
- * Description: single linked list to store variables
+ * struct r_var_li - singly_linked list
+ * @len_var: len of var
+ * @val: value of var
+ * @len_val: len of value
+ * @next: next_node
+ * Description: singly_linked list for storing var
  */
 typedef struct r_var_li
 {
@@ -82,9 +82,9 @@ typedef struct r_var_li
 } var_li;
 
 /**
- * struct _builtin_ - Builtin struct for command args.
- * @name: The name of the command builtin i.e cd, exit, env
- * @f: data type pointer function.
+ * struct _builtin_ - Builtin struct for cmd args.
+ * @name: The name of cmd builtin.
+ * @f: function pointer.
  */
 typedef struct _builtin_
 {
